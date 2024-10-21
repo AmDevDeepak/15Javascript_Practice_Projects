@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Random Color Generator</title>
+  </head>
+  <body>
+    <div class="main">
+      <button>Create HEX Color</button>
+      <div class="inputs">
+        <div class="color-input">
+          <label for="red">Red</label>
+          <input type="range" name="red" id="red" min="0" max="255" value="0" />
+        </div>
+
+        <div class="color-input">
+          <label for="green">Green</label>
+          <input
+            type="range"
+            name="green"
+            id="green"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </div>
+        <div class="color-input">
+          <label for="blue">Blue</label>
+          <input
+            type="range"
+            name="blue"
+            id="blue"
+            min="0"
+            max="255"
+            value="0"
+          />
+        </div>
+      </div>
+      <button id="copyVal">Copy HEX</button>
+    </div>
+    <script>
+      const button = document.querySelector("button");
+      const main = document.querySelector(".main");
+
+      let red = document.querySelector("#red");
+      let green = document.querySelector("#green");
+      let blue = document.querySelector("#blue");
+
+      let redVal, greenVal, blueVal;
+      button.addEventListener("click", generateAndApplyHEXColor);
+
+      function generateAndApplyHEXColor() {
+        redVal = red.value;
+        greenVal = green.value;
+        blueVal = green.value;
+        main.style.backgroundColor = `rgb(${redVal},${greenVal},${blueVal})`;
+        console.log(main.style.backgroundColor);
+      }
+
+      document.querySelector("#copyVal").addEventListener("click", () => {
+        navigator.clipboard.writeText(main.style.backgroundColor);
+        alert(`${main.style.backgroundColor} color copied to clipboard!`);
+      });
+    </script>
+  </body>
+</html>
